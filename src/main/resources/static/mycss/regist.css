@@ -1,0 +1,89 @@
+@charset "UTF-8";
+*{
+	margin:0;
+	padding:0;
+}
+body{
+	width:100%;
+	height:700px;	
+}
+.logo{
+	position: relative;
+	margin-left:200px;
+}
+.logo h3{
+	color: #0080ff;
+	position:relative;
+	top:-60px;
+	margin-left:120px;
+}
+.Container{
+	position:relative;
+	width:100%;
+	height:500px;
+	background-image:url("../imgs/bg.png");
+	background-color: #7abaff;
+	background-repeat:no-repeat;
+	background-size:contain;
+	top:50px;
+}
+.regist_container{
+	width:30%;
+	height:98%;
+	position: relative;
+	left:60%;
+	top:5px;
+	background-color:white;
+}
+.regist_container span{
+	position: relative;
+	left: 20px;
+}
+.regist_container a{
+	position: relative;
+	left: 60px;
+}
+.regist_container input[type="text"]{
+	position: relative;
+	margin-top:35px;
+	left:5%;
+}
+#codeImg{
+	position: relative;
+	left: 50px;
+}
+.regist_container input[type="password"]{
+	position: relative;
+	margin-top:35px;
+	left:5%;
+}
+.regist_container input[type="submit"]{
+	position: relative;
+	margin-top:8px;
+	left: 53px;
+}
+#spanD{
+	position: relative;
+	left: 150px;
+}
+.spanD1{
+	margin-left: 30px;
+}
+#spanD2{
+	position: relative;
+	left: 130px;
+}
+.spanD3{
+	margin-left: 20px;
+}
+#msg{
+    position: relative;
+    left: 20px;
+    top:-3px;
+}
+#returnHome{
+	position: relative;
+	left: 400px;
+	top:-20px;
+}
+

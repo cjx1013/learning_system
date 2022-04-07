@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chen.dao.QuestionDao">
+   <!--按关键字查找-->
+   <select id="find" parameterType="String" resultType="Question">
+       select id,question,answer from questions where question like CONCAT('%',#{question},'%');
+   </select>
+
+    <!--查询所有-->
+    <select id="findAll" resultType="Question">
+        select id,question,answer from questions
+    </select>
+
+    <!--按id查找-->
+    <select id="search" parameterType="String" resultType="Question">
+        select id,question,answer from questions
+        where id=#{id}
+    </select>
+
+    <!--删除问题-->
+    <delete id="delete" parameterType="String">
+        delete from questions where id = #{id}
+    </delete>
+
+    <!--更新问题-->
+    <update id="update" parameterType="Question">
+        update questions set question=#{question},answer=#{answer} where id=#{id}
+    </update>
+
+    <!--插入问题-->
+    <insert id="insert" parameterType="Question">
+        insert into questions values (#{id},#{question},#{answer})
+    </insert>
+</mapper>

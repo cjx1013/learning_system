@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>主页</title>
+    <link rel="stylesheet" type="text/css"
+          th:href="@{/css/bootstrap.css}">
+    <link rel="stylesheet" type="text/css"
+          th:href="@{/mycss/test.css}">
+    <link rel="stylesheet" type="text/css"
+          th:href="@{/css/font-awesome.min.css}">
+    <link rel="stylesheet" type="text/css"
+          th:href="@{/css/font-awesome.css}">
+</head>
+<body>
+<div class="all">
+    <div class="head">
+        <div class="logo">
+            <img style="width: 100px; height: 100px;"
+                 th:src="@{/imgs/logo.jpg}">
+            <h3>学习网</h3>
+        </div>
+        <div class="head_right">
+            <a><i class="fa fa-user-o"></i>
+                欢迎您<span th:text="${session.user.username}?',用户'+${session.user.username}+' ':''"></span></a>
+            <a class="btn btn-light" href="/learningSystem/index">退出</a>
+        </div>
+    </div>
+    <div id="body" class="shadow-lg p-3 mb-5 bg-white rounded">
+        <span id="grade" style="color: red;"></span>
+        <span class="testSpan" th:each="test,state:${tests}">
+            <span th:text="${state.index+1}+'.'"></span>
+            <span style="font-weight: bold;font-size: large" th:text="${test.problem}"></span>
+            <span th:class="'info'+${state.index+1}"></span>
+            <br/>
+                <span class="op">A:</span><input type="radio" th:name="'option'+${state.index+1}" value="A" th:text="${test.A}"><br/>
+
+                <span class="op">B:</span><input type="radio" th:name="'option'+${state.index+1}" value="B" th:text="${test.B}">
+
+            <br/>
+                <span class="op">C:</span><input type="radio" th:name="'option'+${state.index+1}" value="C"th:text="${test.C}"><br/>
+                <span class="op">D:</span><input type="radio" th:name="'option'+${state.index+1}" value="D" th:text="${test.D}"><br/>
+
+        </span>
+            <input type="submit" class="btn btn-primary" id="subBtn" value="提交答案">
+    </div>
+
+</div>
+<script type="text/javascript"
+        th:src="@{/js/jquery.min.js}"></script>
+<script type="text/javascript"
+        th:src="@{/js/bootstrap.min.js}"></script>
+<script>
+    $('#subBtn').click(function () {
+        var option1=$("input[name='option1']:checked").val();
+        var option2=$("input[name='option2']:checked").val();
+        var option3=$("input[name='option3']:checked").val();
+        var option4=$("input[name='option4']:checked").val();
+        var option5=$("input[name='option5']:checked").val();
+        var options=new Array(5);
+        options[0]=option1;options[1]=option2;options[2]=option3;options[3]=option4;options[4]=option5;
+
+        $.ajax({//使用ajax可以保留用户选的答案，且可以通过ajax得到controller查询到的正确答案
+                url:"http://localhost:8989/learningSystem/test/getResult",//请求地址
+                type:"POST",//请求方式GET,POST
+                async:true,//是否异步
+                //发送给后台的数据
+                data:{
+
+                },
+                dataType:"json",
+                contentType:"application/x-www-form-urlencoded",//发送到服务器时所使用的数据类型
+                success:function (result) {
+                    var grade=100;
+                        if(result[0].ans!=options[0]) {
+                            $('.info1').html('× 正确答案'+result[0].ans).css('color','red');
+                            grade-=20;
+                        }else{
+                            $('.info1').html('√').css('color','green');
+                        }
+                    if(result[1].ans!=options[1]) {
+                        $('.info2').html('× 正确答案'+result[1].ans).css('color','red');
+                        grade-=20;
+                    }else{
+                        $('.info2').html('√').css('color','green');
+                    }
+                    if(result[2].ans!=options[2]) {
+                        $('.info3').html('× 正确答案'+result[2].ans).css('color','red');
+                        grade-=20;
+                    }else{
+                        $('.info3').html('√').css('color','green');
+                    }
+                    if(result[3].ans!=options[3]) {
+                        $('.info4').html('× 正确答案'+result[3].ans).css('color','red');
+                        grade-=20;
+                    }else{
+                        $('.info4').html('√').css('color','green');
+                    }
+                    if(result[4].ans!=options[4]) {
+                        $('.info5').html('× 正确答案'+result[4].ans).css('color','red');
+                        grade-=20;
+                    }else{
+                        $('.info5').html('√').css('color','green');
+                    }
+                    $('#grade').html(grade);
+                },
+                error:function () {
+                    alert("打分出错");
+                }
+
+        })
+    })
+
+
+
+</script>
+</body>
+</html>

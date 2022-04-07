@@ -1,0 +1,58 @@
+*{
+    margin:0;
+    padding:0;
+}
+body{
+    background-color: #f3f3f3;
+}
+.all{
+    width:100%;
+    height:1500px;
+}
+#body{
+     width:60%;
+     height:90%;
+     margin:0 auto;
+     background-color: white;
+ }
+.head{
+    width:100%;
+    height:110px;
+}
+.logo{
+    position: relative;
+    margin-left:380px;
+}
+.head h3{
+    color: #0080ff;
+    position:relative;
+    top:-60px;
+    margin-left:120px;
+}
+.head_right{
+    margin-left:1000px;
+    position:relative;
+    top:-100px;
+}
+#head_right_a{
+    margin-right: 10px;
+}
+.testSpan{
+    margin:20px;
+}
+.testSpan input[type=radio]{
+    margin: 20px;
+}
+.op{
+    margin-left: 20px;
+}
+#subBtn{
+    position: relative;
+    top:40px;
+    left: 48%;
+}
+#grade{
+    position: absolute;
+    font-size: 500%;
+    left: 70%;
+}

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>管理页面</title>
+    <link rel="stylesheet" type="text/css"
+          th:href="@{/css/bootstrap.css}">
+    <link rel="stylesheet" type="text/css"
+          th:href="@{/mycss/addUser.css}">
+    <link rel="stylesheet" type="text/css"
+          th:href="@{/css/font-awesome.min.css}">
+    <link rel="stylesheet" type="text/css"
+          th:href="@{/css/font-awesome.css}">
+</head>
+<body>
+<div class="Container">
+    <div class="head">
+        <div class="head_h4">
+            <h4>信息管理系统</h4>
+        </div>
+        <div class="head_a">
+            <a>欢迎您,管理员</a> <a href="/learningSystem/index">注销</a>
+        </div>
+    </div>
+    <div id="body">
+        <div id="leftbody">
+            <nav class="nav flex-column">
+                <a class="nav-link active" th:href="@{/user/findAll}"><i class="fa fa-user-o" aria-hidden="true"></i>人员管理</a>
+                <div class="line"></div>
+                <a class="nav-link" href=""><i class="fa fa-question-circle-o" aria-hidden="true"></i>问答管理</a>
+                <div class="line"></div>
+
+            </nav>
+        </div>
+        <div id="rightbody">
+            <div id="rightbody_head">
+                <div id="rightbody_head_body">
+                    <div id="rightbody_head_body_a">
+                        <a href="#">主页</a><a> /信息管理</a>
+                    </div>
+                </div>
+            </div>
+            <div id="rightbody_body">
+                <div id="addUserBody">
+                    <form th:action="@{/user/add}" method="post">
+                    <span>账号:</span><input type="text" id="uname" name="username" placeholder="账号为长度8~10位的数字" style="width: 60%;height:40px;"><br/>
+                    <span>密码:</span><input type="password" id="pwd" name="password" placeholder="密码为长度为8~10的字母或数字" style="width: 60%;height:40px;"><br/>
+                        <span>性别:</span><span id="spanD"><span class="spanD1">男<input type="radio" name="sex" value="男" checked="checked"></span>
+			        <span class="spanD1">女<input type="radio" name="sex" value="女"></span></span><br/>
+                        <span>电话:</span><input type="text" name="tele" id="phone" placeholder="电话为长度11位的数字" style="width: 60%;height:40px;"><br/>
+                        <span>身份:</span><span id="spanD2">
+                    <span class="spanD3">管理员<input type="radio" name="role" value="管理员" checked="checked"></span>
+                    <span class="spanD3">用户<input type="radio" name="role" value="用户"></span>
+                    </span><br/>
+                    <span id="msg"></span><br/>
+                    <input class="btn btn-primary" type="submit" id="subBtn" value="确认" style="width: 60%;height:40px;" disabled="disabled" >
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+</div>
+
+
+
+<script type="text/javascript"
+        th:src="@{js/jquery-3.4.1.slim.min.js}"></script>
+<script type="text/javascript"
+        th:src="@{js/bootstrap.min.js}"></script>
+<script>
+    var reg1= /^\d{8,10}$/ig;
+    var reg2=/^\w{8,10}$/ig;
+    var reg3=/^\d{11}$/ig;
+    var flag1=false,flag2=false,flag3=false;
+    $('#uname').blur(function () {
+        if($('#uname').val()==""){
+            $('#msg').html('账号不能为空');
+            $('#msg').css("color","red");
+
+        }else if(!$('#uname').val().match(reg1)){
+
+            $('#msg').html('账号为长度8~10位的数字');
+            $('#msg').css("color","red");
+
+        }else{
+            $('#msg').html('OK!');
+            $('#msg').css("color","green");
+            flag1=true;
+            if(flag1&&flag2&&flag3){
+                $('#subBtn').removeAttr('disabled');
+            }
+        }
+    })
+    $('#pwd').blur(function () {
+        if($('#pwd').val()==""){
+            $('#msg').html('密码不能为空');
+            $('#msg').css("color","red");
+
+        }else if(!($('#pwd').val().match(reg2))){
+            $('#msg').html('密码为长度为8~10的字母或数字');
+            $('#msg').css("color","red");
+
+        }else{
+            $('#msg').html('OK!');
+            $('#msg').css("color","green");
+            flag2=true;
+            if(flag1&&flag2&&flag3){
+                $('#subBtn').removeAttr('disabled');
+            }
+        }
+    })
+
+    $('#phone').blur(function () {
+        if($('#phone').val()==""){
+            $('#msg').html('电话不能为空');
+            $('#msg').css("color","red");
+
+        }else if(!($('#phone').val().match(reg3))){
+            $('#msg').html('电话为长度11位的数字');
+            $('#msg').css("color","red");
+
+        }else{
+            $('#msg').html('OK!');
+            $('#msg').css("color","green");
+            flag3=true;
+            if(flag1&&flag2&&flag3){
+                $('#subBtn').removeAttr('disabled');
+            }
+        }
+    })
+    </script>
+</body>
+</html>

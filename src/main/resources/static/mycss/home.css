@@ -1,0 +1,84 @@
+*{
+	margin:0;
+	padding:0;
+}
+body{
+	background-color: #f3f3f3;
+}
+.all{
+	width:100%;
+	height:1500px;
+}
+
+.head{
+	width:100%;
+	height:110px;
+}
+#msgSpan{
+	position: relative;
+	left: -30px;
+}
+.logo{
+	position: relative;
+	margin-left:380px;
+}
+.head h3{
+	color: #0080ff;
+	position:relative;
+	top:-60px;
+	margin-left:120px;
+}
+.head_right{
+	margin-left:1000px;
+	position:relative;
+	top:-100px;
+}
+#head_right_a{
+	margin-right: 10px;
+}
+#downloadmsg{
+	position: relative;
+	left: 30px;
+}
+#answermsg{
+	position: relative;
+	left:450px;
+	color:red;
+	top:-90px;
+}
+#body{
+	width:60%;
+	height:90%;
+	margin:0 auto;
+	background-color: white;
+}
+
+
+#question input{
+	position: relative;
+	top: -60px;
+}
+.card{
+	margin: 10px;
+	width: 200px;
+	height: 200px;
+	float:left;
+}
+.card_container{
+	width:760px;
+	height:700px;
+	float:right;
+}
+#video7{
+	position: relative;
+	left:900px;
+}
+#msg{
+	position: relative;
+	left:20px;
+	top:-90px;
+}
+#tb tr{
+	width: 50%;
+	text-align: center;
+}

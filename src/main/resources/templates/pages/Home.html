@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>主页</title>
+<link rel="stylesheet" type="text/css"
+	th:href="@{css/bootstrap.css}">
+<link rel="stylesheet" type="text/css"
+	th:href="@{mycss/home.css}">
+<link rel="stylesheet" type="text/css"
+	th:href="@{css/font-awesome.min.css}">
+<link rel="stylesheet" type="text/css"
+	th:href="@{css/font-awesome.css}">
+</head>
+<body>
+	<div class="all">
+		<div class="head">
+			<div class="logo">
+				<img style="width: 100px; height: 100px;"
+					th:src="@{imgs/logo.jpg}">
+				<h3>学习网</h3>
+			</div>
+			<div class="head_right">
+						<span id="msgSpan"style="color: red" th:text="${session.msgg}?${session.msgg}:''"></span>
+						<a id="head_right_a"><i class="fa fa-user-o"></i>
+							欢迎您，请登录</a>
+						<button type="button" class="btn btn-light" data-toggle="modal"
+								data-target="#exampleModal" data-whatever="@mdo">登录</button>
+
+						<a class="btn btn-light" href="/learningSystem/register">注册</a>
+
+				<a class="btn btn-light" href="#">退出</a>
+				<a class="btn btn-light" id="testBtn" href="#">每日一测</a>
+				<div class="modal fade" id="exampleModal" tabindex="-1"
+					role="dialog" aria-labelledby="exampleModalLabel"
+					aria-hidden="true">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="exampleModalLabel">Login</h5>
+								<button type="button" class="close" data-dismiss="modal"
+									aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<form th:action="@{/user/login}" method="post">
+								<div class="modal-body">
+									<div class="form-group">
+										<label for="recipient-name" class="col-form-label">账号:</label>
+										<input type="text" class="form-control" id="recipient-name"
+											name="username">
+									</div>
+									<div class="form-group">
+										<label for="message-text" class="col-form-label">密码:</label> <input
+											type="password" name="password" class="form-control">
+									</div>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-secondary"
+										data-dismiss="modal">关闭</button>
+									<input type="submit" id="subB" class="btn btn-primary" value="登录">
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="body" class="shadow-lg p-3 mb-5 bg-white rounded">
+			<h4>中国近代史精选视频</h4>
+			<a id="video7" target="view_window" href="https://search.bilibili.com/all?keyword=%E4%B8%AD%E5%9B%BD%E8%BF%91%E4%BB%A3%E5%8F%B2%E5%AD%A6%E4%B9%A0&from_source=webtop_search&spm_id_from=333.1007">更多>></a>
+			<br /> <br /> <img
+				th:src="@{imgs/美女.jpg}">
+			<div class="card_container">
+				<div class="card">
+					<img th:src="@{imgs/近代史1.png}"
+						class="card-img-top">
+					<div class="card-body">
+						<a id="video1" target="view_window" href="https://www.bilibili.com/video/BV1Wa41167fo?spm_id_from=333.337.search-card.all.click">
+							中国近代史难学？听听资深历史老师</a>
+					</div>
+				</div>
+				<div class="card">
+					<img th:src="@{imgs/近代史2.png}"
+						class="card-img-top">
+					<div class="card-body">
+						<a id="video2" target="view_window" href="https://www.bilibili.com/video/BV16o4y1C7NL?spm_id_from=333.337.search-card.all.click">
+							中国近代史——湖南师范大学</a>
+					</div>
+				</div>
+				<div class="card">
+					<img th:src="@{imgs/近代史3.png}"
+						class="card-img-top">
+					<div class="card-body">
+						<a id="video3" target="view_window" href="https://www.bilibili.com/video/BV18b411F7Gx?spm_id_from=333.337.search-card.all.click">
+							王一珉谈中国近代史</a>
+					</div>
+				</div>
+				<div class="card">
+					<img th:src="@{imgs/近代史4.png}"
+						class="card-img-top">
+					<div class="card-body">
+						<a id="video4" target="view_window" href="https://www.bilibili.com/video/BV1DR4y1s7iJ?spm_id_from=333.337.search-card.all.click">
+							半小时过一遍中国近代史</a>
+					</div>
+				</div>
+				<div class="card">
+					<img th:src="@{imgs/近代史5.png}"
+						class="card-img-top">
+					<div class="card-body">
+						<a id="video5" target="view_window" href="https://www.bilibili.com/video/BV19w411R7nJ?spm_id_from=333.337.search-card.all.click">
+							近代史精讲 素素老师</a>
+					</div>
+				</div>
+				<div class="card">
+					<img th:src="@{imgs/近代史6.png}"
+						class="card-img-top">
+					<div class="card-body">
+						<a id="video6" target="view_window" href="https://www.bilibili.com/video/BV1Xy4y1T7Na?spm_id_from=333.337.search-card.all.click">
+							中国近代史脉络梳理</a>
+					</div>
+				</div>
+			</div>
+
+			<div id="middlebody" class="">
+				<br /> <br /> <br />
+				<h3>知识问答</h3>
+				<div class="col-lg-6" id="question">
+					<div class="input-group">
+						<input type="text" class="form-control" name="question" id="keyId" placeholder="请输入关键字">
+						<span class="input-group-btn">
+       				 <input class="btn btn-primary" id="sub" type="submit" value="提交"></input>
+      				</span>
+					</div><!-- /input-group -->
+				</div><!-- /.col-lg-6 -->
+				<table border="1" id="tb" style="display: none" class="table table-sm table-hover">
+					<tr>
+						<td>找到以下内容</td>
+					</tr>
+				</table>
+
+
+
+
+		</div>
+	</div>
+	</div>
+	<script type="text/javascript"
+		th:src="@{js/jquery.min.js}"></script>
+	<script type="text/javascript"
+		th:src="@{js/bootstrap.min.js}"></script>
+	<script>
+		$('#sub').click(function () {
+			alert('请先登录');
+		})
+		$('#testBtn').click(function () {
+			alert('请先登录');
+		})
+	</script>
+</body>
+</html>

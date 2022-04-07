@@ -1,0 +1,110 @@
+@charset "UTF-8";
+*{
+    margin: 0;
+    padding:0;
+}
+td,th{
+    text-align: center;
+}
+.head{
+    background-color:#3e3e3e;
+    width:100%;
+    height:100px;
+}
+.head_h4{
+    position: relative;
+    margin-left:100px;
+    top:30px;
+}
+.head_h4 h4{
+    color: white;
+}
+.head_a{
+    position: relative;
+    margin-left: 1400px;
+}
+.head_a a{
+    color: white;
+    margin-left: 20px;
+}
+#body{
+    width:100%;
+    height:480px;
+}
+#leftbody{
+    background-color: #efefef;
+    width:20%;
+    height:100%;
+    float: left;
+}
+#leftbody a{
+    margin-left: 50px;
+}
+.line{
+    width:100%;
+    height:1px;
+    background-color: #c0c0c0;
+}
+#rightbody{
+    background-color: #e1e1e1;
+    width:80%;
+    height:100%;
+    float: left;
+}
+#rightbody_head{
+    background-color: #e1e1e1;
+    width:100%;
+    height:55px;
+}
+#rightbody_head_body{
+    position:relative;
+    background-color: #f9f9f9;
+    width: 95%;
+    height:30px;
+    margin:0 auto;
+    top:12px;
+}
+#rightbody_head_body_a{
+    margin-left:10px;
+}
+#rightbody_body{
+    background-color: #f9f9f9;
+    width:95%;
+    height:89%;
+    margin:0 auto;
+}
+#rightbody_root{
+    position: absolute;
+    top:540px;
+    background-color: #f9f9f9;
+    width:76%;
+    height:50px;
+}
+#pagination_id{
+    margin-left:550px;
+}
+#page{
+    position: relative;
+    top:-50px;
+    left:10px;
+}
+#addUserBody{
+    height: 90%;
+    width: 50%;
+    position: relative;
+    left: 400px;
+}
+#addUserBody input{
+    margin: 20px;
+}
+#addUserBody input[type=submit]{
+    position: relative;
+    left: 32px;
+}
+.spanD1{
+    margin-left: 60px;
+}
+#pwd{
+    position: relative;
+    left: 20px;
+}

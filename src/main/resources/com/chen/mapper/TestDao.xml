@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.chen.dao.TestDao">
+    <!--随机查询10条-->
+    <select id="findPart" resultType="Test">
+         select * from test order by rand() limit 5
+    </select>
+
+</mapper>

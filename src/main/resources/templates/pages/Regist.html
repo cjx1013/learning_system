@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>注册</title>
+<link rel="stylesheet" type="text/css" th:href="@{css/bootstrap.css}" >
+<link rel="stylesheet" type="text/css" th:href="@{mycss/regist.css}">
+</head> 
+<body>
+	<div class="logo">
+		<img style="width: 100px; height: 100px;"
+			 th:src="@{imgs/logo.jpg}">
+		<h3>学习网</h3>
+	</div>
+
+	<div class="Container">
+		<div class="regist_container">
+		<form th:action="@{/user/register}" method="post">
+			<span>账号:</span><input type="text" id="uname" name="username" placeholder="账号为长度8~10位的数字" style="width: 80%;height:40px;"><br/>
+			<span>密码:</span><input type="password" id="pwd" name="password" placeholder="密码为长度为8~10的字母或数字" style="width: 80%;height:40px;"><br/><br/>
+			<span>性别:</span><span id="spanD"><span class="spanD1">男<input type="radio" name="sex" value="男" checked="checked"></span>
+			<span class="spanD1">女<input type="radio" name="sex" value="女"></span></span><br/>
+			<span>电话:</span><input type="text" name="tele" id="phone" placeholder="电话为长度11位的数字" style="width: 80%;height:40px;"><br/><br/>
+			<span>身份:</span><span id="spanD2">
+			<span class="spanD3">管理员<input type="radio" name="role" value="管理员" checked="checked"></span>
+			<span class="spanD3">用户<input type="radio" name="role" value="用户"></span>
+			</span><br/>
+			<span>验证码:</span><input type="text" id="validateCode" name="code"><img id="codeImg" th:src="@{/user/code}"><a href="javascript:;"
+			onclick="document.getElementById('codeImg').src='/learningSystem/user/code?'+(new Date()).getTime()">换一张</a><br/>
+            <span id="msg" style="color: red" th:text="${session.code}?'验证码错误':''"></span><br/>
+			<a id="returnHome" href="/learningSystem/index">点此返回主页登录</a>
+			 <input class="btn btn-primary" type="submit" id="subBtn" value="注册" style="width: 80%;height:40px;" disabled="disabled">
+		</form>
+		</div>
+
+	</div>
+    <script type="text/javascript" th:src="@{js/jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{js/bootstrap.min.js}"></script>
+    <script>
+        var reg1= /^\d{8,10}$/ig;
+        var reg2=/^\w{8,10}$/ig;
+        var reg3=/^\d{11}$/ig;
+		var flag1=false,flag2=false,flag3=false,flag4=false;
+        $('#uname').blur(function () {
+            if($('#uname').val()==""){
+                $('#msg').html('账号不能为空');
+                $('#msg').css("color","red");
+
+            }else if(!$('#uname').val().match(reg1)){
+
+                $('#msg').html('账号为长度8~10位的数字');
+                $('#msg').css("color","red");
+
+            }else{
+                $('#msg').html('OK!');
+                $('#msg').css("color","green");
+				flag1=true;
+				if(flag1&&flag2&&flag3&&flag4){
+					$('#subBtn').removeAttr('disabled');
+				}
+            }
+        })
+        $('#pwd').blur(function () {
+            if($('#pwd').val()==""){
+                $('#msg').html('密码不能为空');
+                $('#msg').css("color","red");
+
+            }else if(!($('#pwd').val().match(reg2))){
+                $('#msg').html('密码为长度为8~10的字母或数字');
+                $('#msg').css("color","red");
+
+            }else{
+				$('#msg').html('OK!');
+				$('#msg').css("color","green");
+				flag2=true;
+				if(flag1&&flag2&&flag3&&flag4){
+					$('#subBtn').removeAttr('disabled');
+				}
+            }
+        })
+
+		$('#phone').blur(function () {
+			if($('#phone').val()==""){
+				$('#msg').html('电话不能为空');
+				$('#msg').css("color","red");
+
+			}else if(!($('#phone').val().match(reg3))){
+				$('#msg').html('电话为长度11位的数字');
+				$('#msg').css("color","red");
+
+			}else{
+				$('#msg').html('OK!');
+				$('#msg').css("color","green");
+				flag3=true;
+				if(flag1&&flag2&&flag3&&flag4){
+					$('#subBtn').removeAttr('disabled');
+				}
+			}
+		})
+		$('#validateCode').blur(function () {
+			var code= $('#hid').val();
+			if($('#validateCode').val()==""){
+				$('#msg').html('验证码不能为空');
+				$('#msg').css("color","red");
+
+			}
+			// else if($('#validateCode').val()!=code){
+			// 	$('#msg').html('验证码错误');
+			// 	$('#msg').css("color","red");}
+			else{
+				$('#msg').html('OK!');
+				$('#msg').css("color","green");
+				flag4=true;
+				if(flag1&&flag2&&flag3&&flag4){
+					$('#subBtn').removeAttr('disabled');
+				}
+			}
+
+		})
+    </script>
+
+</body>
+</html>
